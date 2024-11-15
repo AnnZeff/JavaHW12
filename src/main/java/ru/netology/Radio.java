@@ -4,11 +4,17 @@ public class Radio {
     public int currentChannel;
 
     public void setToMinChannel() {
+
         currentChannel = 0;
     }
 
     public void setToMaxChannel() {
         currentChannel = 9;
+    }
+
+    public void setCurrentChannel(int newCurrentChannel) {
+
+        currentChannel = newCurrentChannel;
     }
 
     public void nextChannel() {
@@ -33,21 +39,25 @@ public class Radio {
         currentVolume = 100;
     }
 
+
     public void ambitVolume() {
-        if (currentVolume < 0) {
+        if (currentVolume <= 0) {
             setToMinVolume();
         }
-        if (currentVolume > 100) {
+        if (currentVolume >= 100) {
             setToMaxVolume();
         }
     }
 
     public void increaseVolume() {
 
-        if (currentVolume >= 0) {
-            currentVolume = currentVolume + 1;
-        }
+        currentVolume = currentVolume + 1;
 
+
+    }
+
+    public void decreaseVolume() {
+        currentVolume = currentVolume - 1;
     }
 
 

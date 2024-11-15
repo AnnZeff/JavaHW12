@@ -42,6 +42,18 @@ class RadioTest {
     }
 
     @Test
+    public void testCurrentNomberOfChannel() {
+        Radio chan = new Radio();
+
+        chan.setCurrentChannel(1);
+
+        int expected = 1;
+        int acteal = chan.currentChannel;
+
+        Assertions.assertEquals(expected, acteal);
+    }
+
+    @Test
     public void testNextChannel() {
         Radio chan = new Radio();
         chan.currentChannel = 4;
@@ -110,6 +122,7 @@ class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+
     @Test
     public void testIncreaseVolume() {
         Radio vol = new Radio();
@@ -123,7 +136,20 @@ class RadioTest {
     }
 
     @Test
-    public void sholdNitAmbitVolumeLowMin() {
+    public void testDecreaseVolume() {
+        Radio vol = new Radio();
+        vol.currentVolume = 54;
+        vol.decreaseVolume();
+
+        int expected = 53;
+        int actual = vol.currentVolume;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void sholdNotAmbitVolumeLowMin() {
         Radio vol = new Radio();
         vol.currentVolume = -1;
         vol.ambitVolume();
@@ -133,10 +159,11 @@ class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
-    public void sholdNitAmbitVolumeAboveMax() {
+    public void sholdNotAmbitVolumeAboveMax() {
         Radio vol = new Radio();
-        vol.currentVolume = 100;
+        vol.currentVolume = 101;
         vol.ambitVolume();
 
         int expected = 100;
